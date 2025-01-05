@@ -3,35 +3,190 @@
 ! public: true
 ! author: Robert McNeil
 
-! Target text-heavy websites
-/wiki/$boost
-/blog/$boost
-/article/$boost
-/news/$boost
-/book/$boost
 
-! Target websites with high text-to-image ratio
-$site=archive.org/$boost
-$site=gutenberg.org/$boost
-$site=projectgutenberg.org/$boost
-$site=manybooks.net/$boost
+! Boost text-heavy websites with no images or videos
+|https://example.com/$boost=5
+/blog/$boost=5
+/articles/$boost=5
+/content/$boost=6
+/news/$boost=7
+/journal/$boost=6
+/pdfs/$boost=7
+/tech/$boost=8
+/education/$boost=8
+/learn/$boost=8
+/tutorials/$boost=8
+/handbook/$boost=7
+/reference/$boost=6
 
-! Target websites with simple layouts
-$inurl=simple/$boost
-$inurl=text-only/$boost
-$inurl=low-bandwidth/$boost
+! Boost sites with structured, easy-to-read content (clear headings, simple paragraphs)
+$site=techblog.com/$boost=7
+$site=dev.to/$boost=8
+$site=medium.com/$boost=9
+$site=examplejournal.com/$boost=6
+$site=readablecontent.com/$boost=9
+$site=simpletexts.com/$boost=10
+$site=plaintextcontent.com/$boost=10
+/simplelayout/$boost=8
+/plain-text/$boost=10
 
-! Downrank websites with heavy JavaScript usage
-$inurl=javascript/$downrank
-$inurl=ajax/$downrank
-$inurl=dynamic/$downrank
+! Boost pages with good text contrast, legible fonts, and clean design
+$site=accessibletext.com/$boost=9
+$site=contrastfirst.com/$boost=9
+/accessible/$boost=8
+/contrast/$boost=8
+/font-size/$boost=9
+/spacing/$boost=7
 
-! Downrank websites with too many images
-$inurl=gallery/$downrank
-$inurl=images/$downrank
-$inurl=photos/$downrank
+! Boost documentation pages, technical manuals, and guides
+$site=docs.example.com/$boost=9
+$site=https://stackoverflow.com/$boost=10
+$site=github.com/$boost=9
+/api/$boost=8
+/guide/$boost=8
+/cli-guide/$boost=9
+/documentation/$boost=8
+/tutorial/$boost=8
+/instructions/$boost=7
+/docs/$boost=9
 
-! Boost websites with accessibility features
-$inurl=accessibility/$boost
-$inurl=screen-reader/$boost
-$inurl=high-contrast/$boost
+! Boost educational websites with simple, readable content
+$site=ifixit.com/$boost=10
+$site=khanacademy.org/$boost=10
+/edu/$boost=8
+/study/$boost=7
+/learning/$boost=9
+/courses/$boost=7
+
+! Boost simple news websites that focus on text and analysis
+$site=cnn.com/$boost=6
+$site=dailywire.com/$boost=6
+$site=nytimes.com/$boost=6
+$site=foxnews.com/$boost6
+/news-text/$boost=8
+/text-news/$boost=9
+/analysis/$boost=9
+
+! Downrank pages with JavaScript-heavy content or multimedia
+/flash/$downrank=10
+/javascript/$downrank=10
+/jquery/$downrank=9
+/react/$downrank=9
+/vue/$downrank=9
+/angular/$downrank=8
+/single-page-app/$downrank=7
+
+! Discard pages that rely heavily on images, GIFs, or large media
+/images/$discard
+/photos/$discard
+/gif/$discard
+/video/$discard
+/slideshow/$discard
+/graphics/$discard
+/animated/$discard
+/media/$discard
+
+! Discard pages with heavy popups or overlays that block content
+/popups/$discard
+/ads/$discard
+/malicious-ads/$discard
+/malware/$discard
+/spam/$discard
+
+! Downrank pages with intrusive advertising networks
+$site=adnetwork.com/$downrank=10
+/advertisement/$downrank=9
+/adsense/$downrank=8
+/affiliate/$downrank=7
+/sponsored/$downrank=6
+
+! Downrank pages that force social media popups or login prompts
+/social-popup/$downrank=6
+/facebook-login/$downrank=7
+/twitter-login/$downrank=6
+/social-share/$downrank=5
+
+! Boost pages optimized for keyboard navigation and simple layouts
+/keyboard-friendly/$boost=8
+/simple-navigation/$boost=9
+/keyboard/$boost=9
+/no-scroll/$boost=8
+
+! Prioritize pages with minimal external dependencies
+/no-analytics/$boost=8
+/no-ads/$boost=7
+/standalone/$boost=6
+/self-hosted/$boost=7
+
+! Boost search results for pure text articles, ignoring ads and distractions
+/plaintext/$boost=10
+/text-article/$boost=9
+/plain-content/$boost=8
+
+! Discard results from pages with heavy tracking, cookies, or popups
+/cookies/$discard
+/tracking/$discard
+/third-party/$discard
+
+! Downrank pages with excessive redirects or complex URLs
+/redirect/$downrank=6
+/complex-url/$downrank=7
+/noncanonical/$downrank=8
+
+! Downrank pages with heavy use of JavaScript frameworks for interactivity
+/javascript-frameworks/$downrank=6
+/ajax/$downrank=7
+
+! Boost text-based search result pages with no ads
+/search-results/$boost=8
+/simple-search/$boost=9
+/text-search/$boost=9
+
+! Discard dynamic URLs, product listings, or ecommerce websites
+/product/$discard
+/ecommerce/$discard
+/checkout/$discard
+/cart/$discard
+
+! Downrank image-heavy news websites and image galleries
+$site=exampleimagegallery.com/$downrank=8
+/image-gallery/$downrank=9
+/picture/$downrank=9
+
+! Target specific sites with known text-based navigation and minimalist design
+$site=simplenavigation.com/$boost=7
+$site=cleaninterface.com/$boost=8
+$site=minimaldesign.com/$boost=9
+$site=textonlysite.com/$boost=10
+
+! Boost websites optimized for mobile text-based browsing
+$site=mobile-friendly-text.com/$boost=8
+/amp/$boost=8
+/responsive/$boost=7
+
+! Discard or downrank sites that use unknown or non-standard fonts
+/nonstandard-font/$discard
+/custom-font/$downrank=5
+
+! Boost websites with active, readable forums or community-based Q&A
+/forum/$boost=7
+/community/$boost=6
+/discussion/$boost=7
+/qna/$boost=8
+
+! Boost websites that avoid complex JavaScript UI
+/no-js-ui/$boost=8
+/simple-ui/$boost=7
+
+! Focus on blogs and news websites that are content-heavy and don't rely on heavy styling
+$site=blog.example.com/$boost=9
+$site=content-rich-site.com/$boost=8
+/news-content/$boost=9
+
+! Boost pages without automated content or spam-like behaviors
+$site=manual-entry.com/$boost=8
+$site=editorial-content.com/$boost=9
+
+! Encourage user-friendly, clean content with readable text in any niche
+$site=easyread.com/$boost=8
+/content-heavy/$boost=9
