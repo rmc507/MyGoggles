@@ -87,6 +87,7 @@ $site=foxnews.com/$boost6
 /media/$discard
 
 ! Discard pages with heavy popups or overlays that block content
+$site=youtube.com/$discard
 /popups/$discard
 /ads/$discard
 /malicious-ads/$discard
