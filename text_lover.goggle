@@ -1,0 +1,37 @@
+! name: TextLover
+! description: Prioritize text-heavy websites for text-based browsers
+! public: true
+! author: Robert McNeil
+
+! Target text-heavy websites
+/wiki/$boost
+/blog/$boost
+/article/$boost
+/news/$boost
+/book/$boost
+
+! Target websites with high text-to-image ratio
+$site=archive.org/$boost
+$site=gutenberg.org/$boost
+$site=projectgutenberg.org/$boost
+$site=manybooks.net/$boost
+
+! Target websites with simple layouts
+$inurl=simple/$boost
+$inurl=text-only/$boost
+$inurl=low-bandwidth/$boost
+
+! Downrank websites with heavy JavaScript usage
+$inurl=javascript/$downrank
+$inurl=ajax/$downrank
+$inurl=dynamic/$downrank
+
+! Downrank websites with too many images
+$inurl=gallery/$downrank
+$inurl=images/$downrank
+$inurl=photos/$downrank
+
+! Boost websites with accessibility features
+$inurl=accessibility/$boost
+$inurl=screen-reader/$boost
+$inurl=high-contrast/$boost
